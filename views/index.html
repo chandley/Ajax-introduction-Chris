@@ -5,6 +5,7 @@
 </head>
 
 <body>
+  
     <form id='add_profile'>
       <input id='username' placeholder='Enter a Github username'>
       <button type='submit'>Load profile</button>
@@ -32,9 +33,10 @@
 	<script src='https://code.jquery.com/jquery-2.1.1.min.js'>
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+  <script type="text/javascript" src="../secret.js"></script> 
   <script>
   $(document).ready(function(){
-    $.get('https://api.github.com/users/chandley?', function(user){
+    $.get('https://api.github.com/users/chandley?client_id=' + CLIENT_ID +'&client_secret=' + CLIENT_SECRET, function(user){
       var newProfile = Mustache.render($('#profile-template').html(), user);
       $('.profile-container').append(newProfile);
       //jdkjsaljsafd

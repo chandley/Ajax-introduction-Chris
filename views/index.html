@@ -58,7 +58,9 @@
 
     });
     $('.profile-container').on('click', '.close', function(){
-      alert('Close button clicked');
+      $(this).parent().slideUp(function(){
+        $(this).remove();
+      });
     });
 
   });

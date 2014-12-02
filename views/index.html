@@ -11,7 +11,7 @@
     </form>
   <div class='profile-container'>
   </div>
-  <template>
+  <template id='profile-template'>
     <div class='profile'>
       <div class='left'>
         <img src="{{ avatar_url }}">
@@ -22,10 +22,8 @@
         <a href="{{ html_url }}"> chandley
         </a>
         </h3>
-        <h4>Repos: {{ public_repos }}
-        </h4>
-        <h4>Followers: {{ public_followers }}
-        </h4>
+        <h4>Repos: {{ public_repos }}</h4>
+        <h4>Followers: {{ followers }}</h4>
       </div>
       <br clear="all">
     </div>
@@ -36,8 +34,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
   <script>
   $(document).ready(function(){
-    $.get('https://api.github.com/users/chandley',function(user){
-      var newProfile = Mustache.render($('profile-template').html(), user);
+    $.get('https://api.github.com/users/chandley?', function(user){
+      var newProfile = Mustache.render($('#profile-template').html(), user);
       $('.profile-container').append(newProfile);
       //jdkjsaljsafd
     });

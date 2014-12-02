@@ -20,9 +20,10 @@
 
       <div class='right'>
         <h3> 
-        <a href="{{ html_url }}"> chandley
+        <a href="{{ html_url }}"> {{ login }}
         </a>
         </h3>
+        <h4>{{name}}</h4>
         <h4>Repos: {{ public_repos }}</h4>
         <h4>Followers: {{ followers }}</h4>
       </div>
@@ -36,8 +37,8 @@
   <script type="text/javascript" src="../secret.js"></script> 
   <script>
 
-  var addProfileFromUsername = function(login){
-    $.get('https://api.github.com/users/chandley?', 
+  var addProfileFromUsername = function(username){
+    $.get('https://api.github.com/users/'+ username + '?', 
       function(user){
         var newProfile = Mustache.render($('#profile-template').html(), user);
         $('.profile-container').append(newProfile);
